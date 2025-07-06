@@ -20,7 +20,6 @@ return {
 					"html",
 					"cssls",
 					"jsonls",
-					"bashls",
 					"pyright",
 				},
 				automatic_installation = true,
@@ -71,7 +70,6 @@ return {
 				"html",
 				"cssls",
 				"jsonls",
-				"bashls",
 				"pyright",
 			}
 
@@ -112,17 +110,31 @@ return {
 		version = "1.*",
 		dependencies = { "rafamadriz/friendly-snippets" },
 		opts = {
-			keymap = { preset = "default" },
-			appearance = { nerd_font_variant = "mono" },
-			completion = { documentation = { auto_show = false } },
+			keymap = {
+				keymap = {
+					preset = "none", -- disable default presets
+					show = "<C-Space>", -- open menu
+					cancel = "<C-e>", -- close menu
+					accept = "<CR>", -- confirm current selection (auto selects top if nothing is selected)
+					select_next = "<Tab>",
+					select_prev = "<S-Tab>",
+				},
+			},
+			appearance = {
+				nerd_font_variant = "mono",
+			},
+			completion = {
+				documentation = { auto_show = false },
+			},
 			sources = {
 				default = { "lsp", "path", "snippets", "buffer" },
 			},
-			fuzzy = { implementation = "prefer_rust_with_warning" },
+			fuzzy = {
+				implementation = "prefer_rust_with_warning",
+			},
 		},
 		opts_extend = { "sources.default" },
 	},
-
 	-- 🌲 Treesitter
 	{
 		"nvim-treesitter/nvim-treesitter",

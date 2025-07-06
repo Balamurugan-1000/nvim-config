@@ -35,16 +35,6 @@ local api = vim.api
 local KaizenGroup = api.nvim_create_augroup("KaizenAutocmds", { clear = true })
 
 -- 🔄 Reload config on file save
-api.nvim_create_autocmd("BufWritePost", {
-	group = KaizenGroup,
-	pattern = {
-		"init.lua",
-		"lua/config/*.lua",
-		"lua/plugins/*.lua",
-	},
-	command = "source <afile> | Lazy reload",
-	desc = "Reload init.lua and lazy config on write",
-})
 
 -- 🔤 Set filetype for JSX/TSX extensions
 api.nvim_create_autocmd({ "BufRead", "BufNewFile" }, {

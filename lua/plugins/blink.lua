@@ -1,39 +1,39 @@
 return {
 	{
 		"saghen/blink.cmp",
+		version = "1.*",
+
 		dependencies = {
-			"rafamadriz/friendly-snippets", -- Snippets source (optional)
+			"rafamadriz/friendly-snippets",
 		},
-		version = "1.*", -- Use latest compatible release
-		-- If you use Rust Nightly and want to build:
-		-- build = "cargo build --release",
 
 		opts = {
-			-- Keymap style
-			keymap = { preset = "default" },
+			-- 🎯 Use Enter to accept selection
+			keymap = { preset = "enter" },
 
-			-- Adjust appearance if needed
 			appearance = {
-				nerd_font_variant = "mono", -- or "normal"
+				nerd_font_variant = "mono",
 			},
 
-			-- Docs popup only when triggered manually
 			completion = {
 				documentation = { auto_show = false },
 			},
 
-			-- Completion sources
 			sources = {
-				default = { "lsp", "path", "snippets", "buffer" },
+				default = {
+					"lsp", -- 🔧 Language Server Protocol
+					"snippets", -- ✂️ Snippet engine (via friendly-snippets)
+					"path", -- 📁 File system paths
+					"buffer", -- 📄 Words from current buffer
+					"cmdline", -- 💻 Command-line mode
+				},
 			},
 
-			-- Use the fast fuzzy matcher with fallback
 			fuzzy = {
 				implementation = "prefer_rust_with_warning",
 			},
 		},
 
-		-- Important! This tells Lazy to extend config from other places
 		opts_extend = { "sources.default" },
 	},
 }
